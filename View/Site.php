@@ -11,10 +11,11 @@ namespace View;
 
 class Site {
 
+    public
     public $header;
     public $content;
 
-    function __construct()
+    function __construct($titre)
     {
 
     }
