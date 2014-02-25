@@ -11,4 +11,6 @@ namespace Model;
 
 class XmlLoader {
 
-} 
+}
+
+?>
