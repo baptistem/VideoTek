@@ -11,12 +11,17 @@ namespace View;
 
 class Site {
 
-    public
+    public $title;
     public $header;
     public $content;
 
-    function __construct($titre)
+    function __construct($title)
     {
-
+        $this->title=$title;
     }
-} 
+    public function show($view){
+        require("Static/header.part.php");
+        echo $view.show();
+        require("/View/Static/footer.part.php");
+    }
+}
