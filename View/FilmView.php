@@ -23,10 +23,27 @@ class FilmView {
   </ul>
 </article>
 */
+    private $film;
 
-    public function show($film){
-    private $htmlString;
-        $htmlString = "<article><h1>".$film->title."<h1><p>".$film.genre."</p><p>"$film.description."</p><p>Réalisé par :";
-
+    function __construct($film)
+    {
+        $this->film = $film;
     }
+
+    public function show(){
+        $htmlString = "<article>
+            <h1>".$this->film->title." (".$this->film->year.")<h1>
+            <p>".$this->film->genre."</p>
+            <p>".$this->film->description."</p>
+            <p>Réalisé par :".$this->film->realisator."</p>
+            avec
+            <ul>";
+        foreach($this->film->actors as $actor){
+            $htmlString.= "<li>".$actor."</li>";
+        }
+        $htmlString.= "</ul></article>";
+
+        return $htmlString;
+    }
+
 }
