@@ -17,15 +17,6 @@ class Film {
     public $actors;
     public $desciption;
 
-    function __construct($actors, $year, $desciption, $realisator, $genre, $title)
-    {
-        $this->actors = $actors;
-        $this->year = $year;
-        $this->desciption = $desciption;
-        $this->realisator = $realisator;
-        $this->genre = $genre;
-        $this->title = $title;
-    }
 
 
 }

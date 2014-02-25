@@ -22,6 +22,6 @@ class Site {
     public function show($view){
         require("Static/header.part.php");
         echo $view.show();
-        require("/View/Static/footer.part.php");
+        require("Static/footer.part.php");
     }
 }
