@@ -6,7 +6,6 @@
  * Time: 14:48
  */
 
-namespace Model;
 
 
 use XMLReader;
@@ -19,9 +18,8 @@ class XmlLoader {
     public function __construct()
     {
 
-        $films=[];
+        $films= array();
         $this->reader=new XMLReader;
-
         $this->reader->read("../XML/db.xml");
 
         while($this->reader->read()){
@@ -39,7 +37,7 @@ class XmlLoader {
                 break;
             case "film":
                 if(!$film){
-                    $this->films=[];
+                    $this->films=array();
                 }
                 else{
                     $this->films[]=$film;
@@ -60,7 +58,7 @@ class XmlLoader {
                 break;
             case "acteurs":
                 if (!$actor){
-                    $film->actors=[];
+                    $film->actors=array();
                 }else{
                   $film->actors[]=$actor;
                 }

@@ -16,7 +16,4 @@ class Film {
     public $realisator;
     public $actors;
     public $desciption;
-
-
-
 }

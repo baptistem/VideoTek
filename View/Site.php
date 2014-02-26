@@ -6,8 +6,6 @@
  * Time: 15:10
  */
 
-namespace View;
-
 
 class Site {
 

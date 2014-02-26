@@ -6,15 +6,15 @@
  * Time: 14:45
  */
 
-use View\FilmsView;
-use View\FilmView;
-use View\Site;
-use Model\XmlLoader;
+include 'View/FilmsView.php';
+include 'View/FilmView.php';
+include 'View/Site.php';
+include 'Model/XmlLoader.php';
 
 
 $xmlLoader = new XmlLoader();
-
 $site = new Site("Videothek Damien");
+echo "coucou";
 var_dump($xmlLoader->films);
 $content= new FilmsView($xmlLoader->films);
 $site->show($content);
