@@ -6,9 +6,6 @@
  * Time: 16:09
  */
 
-namespace View;
-
-
 
 class FilmsView {
 
@@ -19,15 +16,15 @@ class FilmsView {
         $this->films = $films;
     }
 
-    function show(){
+    public function show(){
         $htmlString ="<article>
             <ul>";
-        foreach($this->films->title as $titles){
-            $htmlString.="li>".$titles."</li>";
+        foreach($this->films as $film){
+            $htmlString.="<li>".$film->title."</li>";
         }
         $htmlString.="</ul>
         </article>";
-
+        return $htmlString;
     }
 
 } 

@@ -13,8 +13,7 @@ include 'Model/XmlLoader.php';
 
 
 $xmlLoader = new XmlLoader();
+
 $site = new Site("Videothek Damien");
-echo "coucou";
-var_dump($xmlLoader->films);
 $content= new FilmsView($xmlLoader->films);
 $site->show($content);

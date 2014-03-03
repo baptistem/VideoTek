@@ -19,7 +19,7 @@ class Site {
     }
     public function show($view){
         require("Static/header.part.php");
-        echo $view.show();
+         echo $view->show();
         require("Static/footer.part.php");
     }
 }

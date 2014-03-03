@@ -6,7 +6,6 @@
  * Time: 15:06
  */
 
-namespace Model;
 
 
 class Film {
@@ -14,6 +13,60 @@ class Film {
     public $genre;
     public $year;
     public $realisator;
-    public $actors;
-    public $desciption;
+    public $actors=false;
+    public $description;
+
+    /**
+     * @param string $actors
+     */
+    public function setActors($actors)
+    {
+        $this->actors = $actors;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @param string $genre
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+    }
+
+    /**
+     * @param string $realisator
+     */
+    public function setRealisator($realisator)
+    {
+        $this->realisator = $realisator;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @param string $year
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+    }
+
+    function __toString()
+    {
+        return "film from ".$this->realisator." called ".$this->title;
+    }
+
 }

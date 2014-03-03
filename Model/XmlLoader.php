@@ -7,12 +7,14 @@
  */
 
 
-
+include "Film.php";
 
 class XmlLoader {
 
     public $reader;
     public $films;
+    private $film;
+    private $actor;
 
     public function __construct()
     {
@@ -25,11 +27,13 @@ class XmlLoader {
         $node=$this->reader->expand();
         //here we are at films, we loop on it
         $this->processNodeWithChild($node);
+        $this->film=false;
+        $this->actor=false;
     }
     private function processNodeWithChild($node){
         if($node->hasChildNodes()){
             foreach($node->childNodes as $child){
-                $this->processNodeWithChild($node);
+                $this->processNodeWithChild($child);
             }
         }
         else{
@@ -38,46 +42,49 @@ class XmlLoader {
     }
     private function processNode($node){
         if($node ===false) return;
-        $film=false;
-        $actor=false;
-        echo $node->nodeName;
-        switch($node->nodeName){
-            case "film":
-                if(!$film){
+        $path=explode("/",$node->getNodePath());
+        $nodeName=array_pop($path);
+        $nodeName=array_pop($path);
+        $nodeName=str_replace("[","",$nodeName);
+        $nodeName=str_replace("]","",$nodeName);
+        $nodeName=preg_replace("(\d)","",$nodeName);
+        switch($nodeName){
+            case "films":
+                if(!$this->film){
                     $this->films=array();
                 }
                 else{
-                    $this->films[]=$film;
+                    $this->films[]=$this->film;
                 }
-                $film=new Film();
+                $this->film =new Film();
                 break;
             case "titre":
-                $film->title=$node->nodeValue;
+                $this->film->setTitle($node->wholeText);
                 break;
             case "genre":
-                $film->genre=$node->nodeValue;
+                $this->film->setGenre($node->wholeText);
                 break;
             case "realisateur":
-                $film->realisator=$node->nodeValue;
+                $this->film->setRealisator($node->wholeText);
                 break;
             case "annee":
-                $film->annee=$node->nodeValue;
+                $this->film->setYear($node->wholeText);
                 break;
             case "acteurs":
-                if (!$actor){
-                    $film->actors=array();
+                if (!$this->film->actors){
+                    $this->film->setActors(array());
                 }else{
-                  $film->actors[]=$actor;
+                    $this->film->actors[]=$this->actors;
                 }
                 break;
             case "acteur":
                 $actor=$node->nodeValue;
                 break;
             case "description":
-                $film->description=$node->nodeValue;
+                $this->film->setDescription($node->wholeText);
                 break;
         }
-                $this->films[]=$film;
+
 
     }
 }

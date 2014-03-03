@@ -6,9 +6,6 @@
  * Time: 15:14
  */
 
-namespace View;
-
-
 class FilmView {
 
 /*
