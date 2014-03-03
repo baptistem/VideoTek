@@ -64,6 +64,10 @@ class Film {
         $this->year = $year;
     }
 
+    public function addActor($actor){
+        $this->actors[]=$actor;
+    }
+
     function __toString()
     {
         return "film from ".$this->realisator." called ".$this->title;

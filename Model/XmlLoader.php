@@ -53,14 +53,18 @@ class XmlLoader {
             $this->processNode($node);
         }
     }
-    private function processNode($node){
-        if($node ===false) return;
-        $path=explode("/",$node->getNodePath());
+    private function cleanPath($nodePath){
+        $path=explode("/",$nodePath);
         $nodeName=array_pop($path);
         $nodeName=array_pop($path);
         $nodeName=str_replace("[","",$nodeName);
         $nodeName=str_replace("]","",$nodeName);
         $nodeName=preg_replace("(\d)","",$nodeName);
+        return $nodeName;
+    }
+    private function processNode($node){
+        if($node ===false) return;
+        $nodeName=$this->cleanPath($node->getNodePath());
         switch($nodeName){
             case "films":
                 if(!$this->film){
@@ -84,14 +88,15 @@ class XmlLoader {
                 $this->film->setYear($node->wholeText);
                 break;
             case "acteurs":
-                if (!$this->film->actors){
+                if (!$this->actor){
                     $this->film->setActors(array());
                 }else{
-                    $this->film->actors[]=$this->actors;
+                    $this->film->addActor($this->actor);
                 }
                 break;
             case "acteur":
-                $actor=$node->nodeValue;
+
+                $this->actor=$node->nodeValue;
                 break;
             case "description":
                 $this->film->setDescription($node->wholeText);

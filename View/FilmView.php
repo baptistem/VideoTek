@@ -32,7 +32,7 @@ class FilmView {
             <h1>".$this->film->title." (".$this->film->year.")<h1>
             <p>".$this->film->genre."</p>
             <p>".$this->film->description."</p>
-            <p>Réalisé par :".$this->film->realisator."</p>
+            <p>Réalisé par : ".$this->film->realisator."</p>
             avec
             <ul>";
         foreach($this->film->actors as $actor){
