@@ -9,11 +9,15 @@
 include 'View/FilmsView.php';
 include 'View/FilmView.php';
 include 'View/Site.php';
+include 'View/ErrorView.php';
 include 'Model/XmlLoader.php';
-
-
 $xmlLoader = new XmlLoader();
 
-$site = new Site("Videothek Damien");
-$content= new FilmsView($xmlLoader->films);
-$site->show($content);
+if($_GET && array_key_exists("id",$_GET)){
+   $xmlLoader->getFilmById($_GET["id"],array_key_exists("edit",$_GET));
+}
+else{
+   $xmlLoader->getAll();
+}
+$site = new Site("Videothek Damien",$xmlLoader->films,false);
+$site->show();

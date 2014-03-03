@@ -19,7 +19,9 @@ class FilmsView {
     public function show(){
         $htmlString ="<article>
             <ul>";
+        $index=0;
         foreach($this->films as $film){
+            $index++;
             $htmlString.="<li>".$film->title."</li>";
         }
         $htmlString.="</ul>

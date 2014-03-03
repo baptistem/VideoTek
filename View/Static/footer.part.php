@@ -1,2 +1,2 @@
 </html>
-<? //nothing much to say here... ?>
+<?PHP //nothing much to say here... ?>

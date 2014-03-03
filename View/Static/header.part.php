@@ -1,5 +1,7 @@
+<!doctype HTML>
+
 <html>
 <head>
     <meta charset="utf-8">
-    <title><?php echo $Site->title ?></title>
+    <title><?php echo $title ?></title>
 </head>

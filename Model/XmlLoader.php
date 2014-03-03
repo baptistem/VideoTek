@@ -24,11 +24,24 @@ class XmlLoader {
         $this->reader->open("http://localhost/v/XML/db.xml");
         $this->reader->read();
         $this->reader->next();
+        $this->film=false;
+        $this->actor=false;
+    }
+    public function getAll(){
         $node=$this->reader->expand();
         //here we are at films, we loop on it
         $this->processNodeWithChild($node);
-        $this->film=false;
-        $this->actor=false;
+
+    }
+    public function getFilmById($id){
+        $id=$id*2+1;
+        $node=$this->reader->expand();
+        $mynode=$node->childNodes->item(1);
+        $lastNode=$mynode->childNodes->item($id);
+        $this->film =new Film();
+        $this->processNodeWithChild($lastNode);
+        $this->films=array();
+        $this->films[]=$this->film;
     }
     private function processNodeWithChild($node){
         if($node->hasChildNodes()){

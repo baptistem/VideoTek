@@ -13,13 +13,24 @@ class Site {
     public $header;
     public $content;
 
-    function __construct($title)
+    function __construct($title,$films,$isEdit)
     {
         $this->title=$title;
+        if(count($films)==1){
+            $this->content=new FilmView($films[0]);
+        }
+        else if (count($films)>1){
+            $this->content=new FilmsView($films);
+        }
+        else{
+            $this->content=new ErrorView(503,"aucun film disponible");
+        }
     }
-    public function show($view){
+    public function show(){
+        //title is used in header
+        $title=$this->title;
         require("Static/header.part.php");
-         echo $view->show();
+        echo $this->content->show();
         require("Static/footer.part.php");
     }
 }
