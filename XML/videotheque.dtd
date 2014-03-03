@@ -1,0 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <!ELEMENT videotheque (films)+>
+ <!ELEMENT films (film)+>
+ <!ELEMENT film  (titre,genre,annee,realisateur,acteurs,description)>
+ <!ELEMENT titre (#PCDATA)>
+ <!ELEMENT genre (#PCDATA)>
+ <!ELEMENT annee (#PCDATA)>
+ <!ELEMENT realisateur (#PCDATA)>
+ <!ELEMENT acteurs (acteur)+>
+ <!ELEMENT acteur (#PCDATA)>
+ <!ELEMENT description (#PCDATA)>
