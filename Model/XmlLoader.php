@@ -8,7 +8,6 @@
 
 
 
-use XMLReader;
 
 class XmlLoader {
 
@@ -20,21 +19,29 @@ class XmlLoader {
 
         $films= array();
         $this->reader=new XMLReader;
-        $this->reader->read("../XML/db.xml");
-
-        while($this->reader->read()){
-            $this->processNode($this->reader->expand()->childNodes[0]);
+        $this->reader->open("http://localhost/v/XML/db.xml");
+        $this->reader->read();
+        $this->reader->next();
+        $node=$this->reader->expand();
+        //here we are at films, we loop on it
+        $this->processNodeWithChild($node);
+    }
+    private function processNodeWithChild($node){
+        if($node->hasChildNodes()){
+            foreach($node->childNodes as $child){
+                $this->processNodeWithChild($node);
+            }
+        }
+        else{
+            $this->processNode($node);
         }
     }
     private function processNode($node){
         if($node ===false) return;
         $film=false;
         $actor=false;
+        echo $node->nodeName;
         switch($node->nodeName){
-            case "films":
-            case "videotheque":
-                $this->processNode($this->reader->expand()->childNodes[0]);
-                break;
             case "film":
                 if(!$film){
                     $this->films=array();
