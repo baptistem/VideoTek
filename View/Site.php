@@ -5,7 +5,6 @@
  * Date: 25/02/14
  * Time: 15:10
  */
-namespace Videotek\View;
 
 class Site {
 

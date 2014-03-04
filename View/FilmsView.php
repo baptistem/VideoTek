@@ -5,7 +5,6 @@
  * Date: 25/02/2014
  * Time: 16:09
  */
-namespace Videotek\View;
 
 class FilmsView {
 

@@ -6,8 +6,6 @@
  * Time: 15:06
  */
 
-namespace Videotek\Model;
-
 class Film {
     public $title;
     public $genre;

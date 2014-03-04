@@ -5,12 +5,14 @@
  * Date: 25/02/14
  * Time: 14:45
  */
-namespace Videotek\View;
 
-namespace Videotek;
+//namespace Videotek;
 
-use Videotek\Controler\XmlLoader;
-use Videotek\View\Site;
+include 'View/FilmsView.php';
+include 'View/FilmView.php';
+include 'View/Site.php';
+include 'View/ErrorView.php';
+include 'Controler/XmlLoader.php';
 
 $xmlLoader = new XmlLoader();
 

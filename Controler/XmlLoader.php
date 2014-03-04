@@ -5,10 +5,7 @@
  * Date: 25/02/14
  * Time: 14:48
  */
-
-namespace Videotek\Controler;
-
-include "Model/Film.php";
+include 'Model/Film.php';
 
 class XmlLoader {
 

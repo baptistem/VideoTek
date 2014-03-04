@@ -5,7 +5,7 @@
  * Date: 03/03/14
  * Time: 17:02
  */
-namespace Videotek\View;
+
 
 class ErrorView {
     public $errorCode;
