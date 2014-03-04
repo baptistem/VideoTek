@@ -6,7 +6,7 @@
  * Time: 14:48
  */
 
-//namespace Videotek\Controler;
+namespace Videotek\Controler;
 
 include "Model/Film.php";
 

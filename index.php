@@ -5,14 +5,13 @@
  * Date: 25/02/14
  * Time: 14:45
  */
+namespace Videotek\View;
 
-//namespace Videotek;
+namespace Videotek;
 
-include 'View/FilmsView.php';
-include 'View/FilmView.php';
-include 'View/Site.php';
-include 'View/ErrorView.php';
-include 'Controler/XmlLoader.php';
+use Videotek\Controler\XmlLoader;
+use Videotek\View\Site;
+
 $xmlLoader = new XmlLoader();
 
 if($_GET && array_key_exists("id",$_GET)){
