@@ -7,7 +7,7 @@
  */
 include 'Model/Film.php';
 
-class XmlLoader {
+class XmlLoader{
 
     public $reader;
     public $films;
@@ -29,6 +29,7 @@ class XmlLoader {
         $node=$this->reader->expand();
         //here we are at films, we loop on it
         $this->processNodeWithChild($node);
+        $this->reader->close();
 
     }
     public function getFilmById($id){
@@ -40,6 +41,7 @@ class XmlLoader {
         $this->processNodeWithChild($lastNode);
         $this->films=array();
         $this->films[]=$this->film;
+        $this->reader->close();
     }
     private function processNodeWithChild($node){
         if($node->hasChildNodes()){
