@@ -25,6 +25,10 @@ class XmlLoader{
         $this->film=false;
         $this->actor=false;
     }
+
+    /**
+     * this method return all the element in the xml file
+     */
     public function getAll(){
         $node=$this->reader->expand();
         //here we are at films, we loop on it
@@ -32,6 +36,12 @@ class XmlLoader{
         $this->reader->close();
 
     }
+
+    /**
+     * this method return a simple film in order to avoid parsing the whole file
+     * @param $id int the position in the film's array, in order to use the ->item($id) we need to *2+1 to avoid empty text node
+     *
+     */
     public function getFilmById($id){
         $id=$id*2+1;
         $node=$this->reader->expand();
@@ -43,6 +53,11 @@ class XmlLoader{
         $this->films[]=$this->film;
         $this->reader->close();
     }
+
+    /**
+     * this method loop on children of a node
+     * @param $node DOMElement an element to iterate on
+     */
     private function processNodeWithChild($node){
         if($node->hasChildNodes()){
             foreach($node->childNodes as $child){
@@ -53,15 +68,26 @@ class XmlLoader{
             $this->processNode($node);
         }
     }
+
+    /**
+     * in order to know in what type of node we are we strip the path
+     * @param $nodePath string like /foo/bar/baz
+     * @return string like baz
+     */
     private function cleanPath($nodePath){
         $path=explode("/",$nodePath);
-        $nodeName=array_pop($path);
+        array_pop($path);
         $nodeName=array_pop($path);
         $nodeName=str_replace("[","",$nodeName);
         $nodeName=str_replace("]","",$nodeName);
         $nodeName=preg_replace("(\d)","",$nodeName);
         return $nodeName;
     }
+
+    /**
+     * work on a node
+     * @param $node DOMText
+     */
     private function processNode($node){
         if($node ===false) return;
         $nodeName=$this->cleanPath($node->getNodePath());

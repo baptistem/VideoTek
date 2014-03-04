@@ -22,5 +22,5 @@ if($_GET && array_key_exists("id",$_GET)){
 else{
    $xmlLoader->getAll();
 }
-$site = new Site("Videothek Damien",$xmlLoader->films,false);
+$site = new Site("Videotek Damien",$xmlLoader->films,false);
 $site->show();

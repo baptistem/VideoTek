@@ -55,7 +55,7 @@ class Film {
     }
 
     /**
-     * @param string $year
+     * @param int $year
      */
     public function setYear($year)
     {

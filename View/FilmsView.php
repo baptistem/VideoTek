@@ -20,7 +20,7 @@ class FilmsView {
             <ul>";
         $index=0;
         foreach($this->films as $film){
-            $htmlString.="<li><a href=?id=".$index.">".$film->title."</a></li>";
+            $htmlString.="<li><a href='?id=".$index."'>".$film->title."</a></li>";
             $index++;
 
         }

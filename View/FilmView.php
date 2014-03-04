@@ -28,7 +28,7 @@ class FilmView {
 
     public function show(){
         $htmlString = "<article>
-            <h1>".$this->film->title." (".$this->film->year.")<h1>
+            <h2>".$this->film->title." (".$this->film->year.")</h2>
             <p>".$this->film->genre."</p>
             <p>".$this->film->description."</p>
             <p>Réalisé par : ".$this->film->realisator."</p>
