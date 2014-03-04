@@ -6,8 +6,9 @@
  * Time: 14:48
  */
 
+//namespace Videotek\Controler;
 
-include "Film.php";
+include "Model/Film.php";
 
 class XmlLoader {
 
@@ -21,7 +22,7 @@ class XmlLoader {
 
         $films= array();
         $this->reader=new XMLReader;
-        $this->reader->open("http://localhost/v/XML/db.xml");
+        $this->reader->open("XML/db.xml");
         $this->reader->read();
         $this->reader->next();
         $this->film=false;

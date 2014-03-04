@@ -6,11 +6,13 @@
  * Time: 14:45
  */
 
+//namespace Videotek;
+
 include 'View/FilmsView.php';
 include 'View/FilmView.php';
 include 'View/Site.php';
 include 'View/ErrorView.php';
-include 'Model/XmlLoader.php';
+include 'Controler/XmlLoader.php';
 $xmlLoader = new XmlLoader();
 
 if($_GET && array_key_exists("id",$_GET)){
