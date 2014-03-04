@@ -68,7 +68,19 @@ class Film {
 
     function __toString()
     {
-        return "film from ".$this->realisator." called ".$this->title;
+        $xmlfilm = "<film>
+			<titre>".$this->title."</titre>
+			<genre>".$this->genre."</genre>
+			<realisateur>".$this->realisator."</realisateur>
+			<annee>".$this->year."</annee>
+			<acteurs>";
+        foreach ($this->actors as $actor) {
+            $xmlfilm.="<acteur>".$actor."</acteur>";
+        }
+        $xmlfilm.="</acteurs>
+			<description>".$this->description."</description>
+		</film>";
+        return $xmlfilm;
     }
 
 }
