@@ -13,12 +13,33 @@ include 'View/FilmView.php';
 include 'View/Site.php';
 include 'View/ErrorView.php';
 include 'Controler/XmlLoader.php';
-
 include 'View/FileSystemReader.php';
 
-$test = new FileSystemReader();
+/*$test = new FileSystemReader();
+$test2 = array();
 
-$test->readfilm("/Users/arnaud/Movies/");
+$test2 = $test->readfilm("/Users/arnaud/Movies/");
+
+$taille = sizeof($test2);
+foreach($test2 as $valeur){
+    echo "</br>".$valeur;
+}*/
+
+include 'Lib/Allocine.php';
+
+define('ALLOCINE_PARTNER_KEY', '100043982026');
+define('ALLOCINE_SECRET_KEY', '29d185d98c984a359e6e6f26a0474269');
+
+$allocine = new Allocine(ALLOCINE_PARTNER_KEY, ALLOCINE_SECRET_KEY);
+
+$result = $allocine->search('Arrow');
+
+echo $result;
+
+/*for($i=0; $i<$taille; $i++)
+{
+    echo $test2[$i].'<br/>';
+}*/
 
 /*$xmlLoader = new XmlLoader();
 
