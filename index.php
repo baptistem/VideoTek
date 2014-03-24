@@ -25,7 +25,7 @@ foreach($test2 as $valeur){
     echo "</br>".$valeur;
 }*/
 
-include 'Lib/Allocine.php';
+/*include 'Lib/Allocine.php';
 
 define('ALLOCINE_PARTNER_KEY', '100043982026');
 define('ALLOCINE_SECRET_KEY', '29d185d98c984a359e6e6f26a0474269');
@@ -34,14 +34,14 @@ $allocine = new Allocine(ALLOCINE_PARTNER_KEY, ALLOCINE_SECRET_KEY);
 
 $result = $allocine->search('Arrow');
 
-echo $result;
+echo $result;¨/
 
 /*for($i=0; $i<$taille; $i++)
 {
     echo $test2[$i].'<br/>';
 }*/
 
-/*$xmlLoader = new XmlLoader();
+$xmlLoader = new XmlLoader();
 
 if($_GET && array_key_exists("id",$_GET)){
    $xmlLoader->getFilmById($_GET["id"],array_key_exists("edit",$_GET));
@@ -50,4 +50,4 @@ else{
    $xmlLoader->getAll();
 }
 $site = new Site("Videotek Damien",$xmlLoader->films,false);
-$site->show();*/
+$site->show();
