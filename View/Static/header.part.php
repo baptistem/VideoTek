@@ -8,14 +8,17 @@
 </head>
 <body>
 <header>
-    <h1>
+    <a href="/v">
+        <h1>
         <?php echo $title ?>
-    </h1>
+        </h1>
+    </a>
     <nav>
         <ul>
-           <li><a href="/">Accueil</a></li>
+           <li><a href="?">Accueil</a></li>
            <li><a href="?new=film">Nouveau</a></li>
            <li><a href="?edit=">Edition</a></li>
         </ul>
     </nav>
 </header>
+<span id="top"></span>
