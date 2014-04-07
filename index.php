@@ -42,9 +42,16 @@ echo $result;¨/
 }*/
 
 $xmlLoader = new XmlLoader();
+$xmlWritter;
 
 if($_GET && array_key_exists("id",$_GET)){
    $xmlLoader->getFilmById($_GET["id"],array_key_exists("edit",$_GET));
+}
+else if ($_POST && array_key_exists("titre",$_POST) && array_key_exists("genre",$_POST) && array_key_exists("realisateur",$_POST)
+    && array_key_exists("annee",$_POST) && array_key_exists("description",$_POST) && array_key_exists("acteurs",$_POST))
+{
+    $xmlWritter = new XmlWriter($_POST["titre"], $_POST["genre"], $_POST["realisateur"], $_POST["annee"],
+        $_POST["description"], $_POST["acteurs"]);
 }
 else{
    $xmlLoader->getAll();
