@@ -24,6 +24,7 @@ class XmlLoader{
         $this->reader->next();
         $this->film=false;
         $this->actor=false;
+
     }
 
     /**

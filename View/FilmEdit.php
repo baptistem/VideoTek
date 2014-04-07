@@ -40,6 +40,3 @@ class FilmEdit {
         return $htmlString;
     }
 }
-
-$foo=new FilmEdit();
-echo $foo->show();

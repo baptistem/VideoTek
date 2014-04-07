@@ -1,8 +1,6 @@
 <?php
 
-include 'Model/Film.php';
-
-class XmlWriter
+class FilmWriter
 {
 
     private $titre;

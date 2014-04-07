@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kolo
- * Date: 25/02/14
- * Time: 15:10
- */
 
 class Site {
 
@@ -12,9 +6,12 @@ class Site {
     public $header;
     public $content;
 
-    function __construct($title,$films,$isEdit)
+    function __construct($title,$films)
     {
         $this->title=$title;
+        if(count($films)==0){
+            $this->content=new FilmEdit();
+        }
         if(count($films)==1){
             $this->content=new FilmView($films[0]);
         }
