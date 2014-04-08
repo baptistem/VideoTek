@@ -22,12 +22,14 @@ class FilmWriter
 
     public function write_in_XML()
     {
-        $content=readfile("XML/db.xml");
-        $array=preg_split('\n',$content);
+        if($_SERVER['REMOTE_ADDR']!='10.0.8.2'){
+        $content=false;
+    }
+        $xmlContent=fread(fopen("XML/db.xml",'r'),2000);;
+        $array=preg_split('\n',$xmlContent);
         $act=preg_split('\n',$this->acteurs);
-        $array.pop();
-        $array.pop();
-
+        array_pop($array);
+        array_pop($array);
         $array[]="<film>\n";
 
         $array[]="<titre>\n";
@@ -47,7 +49,8 @@ class FilmWriter
         $array[]="</annee>\n";
 
         $array[]="<acteurs>\n";
-        foreach($act as $acteur)
+        var_dump($this->acteurs);
+        foreach($this->acteurs as $acteur)
         {
             $array[]="</acteur>\n";
             $array[]=$acteur."\n";
@@ -62,5 +65,7 @@ class FilmWriter
         $array[]="</film>\n";
         $array[]="</films>\n";
         $array[]="</xml>";
+        $towrite=join('\n',$array);
+        fwrite(fopen("XML/db.xml",'r'),$towrite);
     }
 }

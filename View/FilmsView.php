@@ -16,15 +16,24 @@ class FilmsView {
     }
 
     public function show(){
-        $htmlString ="\n<article>\n<div class='flexboxContainer'>\n";
+        $htmlString ="\n<article>\n<ul class='flexboxContainer'>\n";
         $index=0;
+        $highlight="";
         foreach($this->films as $film){
-            $htmlString.="<a  class='flexboxElement' href='?id=".$index."'>".$film->title."</a>\n";
+            $htmlString.="<li  class='flexboxElement ".$highlight." '>
+            <a href='?id=".$index."'>".$film->title."</a>
+            </li>\n";
             $index++;
+            if(rand(0,8)==2){
+                $highlight=" highlight ";
+            }
+            else{
+                $highlight="";
+            }
 
         }
         $htmlString.="
-        </div></article>";
+        </ul></article>";
         return $htmlString;
     }
 
