@@ -2,7 +2,7 @@
  
  <!ELEMENT videotheque (films)+>
  <!ELEMENT films (film)+>
- <!ELEMENT film  (titre,genre,annee,realisateur,acteurs,description)>
+ <!ELEMENT film  (titre,genre,annee,realisateur,acteurs,description,media)>
  <!ELEMENT titre (#PCDATA)>
  <!ELEMENT genre (#PCDATA)>
  <!ELEMENT annee (#PCDATA)>
@@ -10,3 +10,4 @@
  <!ELEMENT acteurs (acteur)+>
  <!ELEMENT acteur (#PCDATA)>
  <!ELEMENT description (#PCDATA)>
+ <!ELEMENT media (#PCDATA)>
