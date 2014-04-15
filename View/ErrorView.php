@@ -17,8 +17,8 @@ class ErrorView {
         $this->message = $message;
     }
     function show(){
-        $htmlResult="<div class='error'><h1>".$this->errorCode."</h1>";
-        $htmlResult.="<pre>".$this->message."</pre>";
+        $htmlResult="<article class='error'><h1>".$this->errorCode."</h1>";
+        $htmlResult.="<pre>".$this->message."</pre></article>";
         return $htmlResult;
     }
 
