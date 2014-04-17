@@ -13,6 +13,7 @@ class Film {
     public $realisator;
     public $actors=false;
     public $description;
+    public $media;
 
     /**
      * @param string $actors
@@ -61,7 +62,9 @@ class Film {
     {
         $this->year = $year;
     }
-
+    public function setMedia($media){
+        $this->media=$media;
+    }
     public function addActor($actor){
         $this->actors[]=$actor;
     }
