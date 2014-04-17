@@ -62,11 +62,13 @@ class Film {
     {
         $this->year = $year;
     }
-    public function setMedia($media){
-        $this->media=$media;
-    }
+
     public function addActor($actor){
         $this->actors[]=$actor;
+    }
+
+    public function setMedia($media){
+        $this->media = $media;
     }
 
     function __toString()
@@ -82,6 +84,7 @@ class Film {
         }
         $xmlfilm.="</acteurs>
 			<description>".$this->description."</description>
+			<media>".$this->media."</media>
 		</film>";
         return $xmlfilm;
     }
