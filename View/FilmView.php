@@ -27,7 +27,11 @@ class FilmView {
     }
 
     public function show(){
-        $htmlString = "<article>
+        $htmlString = "<section class='flexboxContainer'>
+        <article class='flexboxElement' >
+            <img alt='image for film' source='".$this->media."'/>
+        </artice>
+        <article>
             <h2>".$this->film->title." (".$this->film->year.")</h2>
             <p>".$this->film->genre."</p>
             <p>".$this->film->description."</p>
@@ -37,7 +41,8 @@ class FilmView {
         foreach($this->film->actors as $actor){
             $htmlString.= "<li>".$actor."</li>";
         }
-        $htmlString.= "</ul></article>";
+        $htmlString.= "</ul>
+        </article>";
 
         return $htmlString;
     }

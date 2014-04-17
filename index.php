@@ -31,7 +31,7 @@ else if ($_POST && array_key_exists("titre",$_POST) && array_key_exists("genre",
     && array_key_exists("annee",$_POST) && array_key_exists("description",$_POST) && array_key_exists("acteurs",$_POST))
 {
     $FilmWriter = new FilmWriter($_POST["titre"], $_POST["genre"], $_POST["realisateur"], $_POST["annee"],
-        $_POST["description"], preg_split('\n',$_POST["acteurs"]));
+        $_POST["description"], explode('\n',$_POST["acteurs"]));
     if(!$FilmWriter->write_in_XML()){
        $site = new Site("Erreur",null);
        $site->setError("401",401,"not authorized, you must be in local to change/view films");

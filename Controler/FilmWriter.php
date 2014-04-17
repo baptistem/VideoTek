@@ -22,50 +22,71 @@ class FilmWriter
 
     public function write_in_XML()
     {
-        if($_SERVER['REMOTE_ADDR']!='10.0.8.2'){
-        $content=false;
-    }
-        $xmlContent=fread(fopen("XML/db.xml",'r'),2000);;
-        $array=preg_split('\n',$xmlContent);
-        $act=preg_split('\n',$this->acteurs);
+        $xmlContent=new XMLWriter("XML/db.xml");;
+        $array=explode('\n',$xmlContent);
+
+        var_dump($array);
         array_pop($array);
         array_pop($array);
-        $array[]="<film>\n";
+        $array[]="<film>
+        ";
 
-        $array[]="<titre>\n";
-        $array[]=$this->titre."\n";
-        $array[]="</titre>\n";
+        $array[]="<titre>
+        ";
+        $array[]=$this->titre."
+        ";
+        $array[]="</titre>
+        ";
 
-        $array[]="<genre>\n";
-        $array[]=$this->genre."\n";
-        $array[]="</genre>\n";
+        $array[]="<genre>
+        ";
+        $array[]=$this->genre."
+        ";
+        $array[]="</genre>
+        ";
 
-        $array[]="<realisateur>\n";
-        $array[]=$this->realisateur."\n";
-        $array[]="</realisateur>\n";
+        $array[]="<realisateur>
+        ";
+        $array[]=$this->realisateur."
+        ";
+        $array[]="</realisateur>
+        ";
 
-        $array[]="<annee>\n";
-        $array[]=$this->annee."\n";
-        $array[]="</annee>\n";
+        $array[]="<annee>
+        ";
+        $array[]=$this->annee."
+        ";
+        $array[]="</annee>
+        ";
 
-        $array[]="<acteurs>\n";
-        var_dump($this->acteurs);
+        $array[]="<acteurs>
+        ";
         foreach($this->acteurs as $acteur)
         {
-            $array[]="</acteur>\n";
-            $array[]=$acteur."\n";
-            $array[]="</acteur>\n";
+            $array[]="</acteur>
+            ";
+            $array[]=$acteur."
+            ";
+            $array[]="</acteur>
+            ";
         }
-        $array[]="</acteurs>\n";
+        $array[]="</acteurs>
+        ";
 
-        $array[]="<description>\n";
-        $array[]=$this->description."\n";
-        $array[]="</description>\n";
+        $array[]="<description>
+        ";
+        $array[]=$this->description."
+        ";
+        $array[]="</description>
+        ";
 
-        $array[]="</film>\n";
-        $array[]="</films>\n";
+        $array[]="</film>
+        ";
+        $array[]="</films>
+        ";
         $array[]="</xml>";
         $towrite=join('\n',$array);
-        fwrite(fopen("XML/db.xml",'r'),$towrite);
+        file_put_contents("XML/db.xml",$towrite);
+        return true;
     }
 }
