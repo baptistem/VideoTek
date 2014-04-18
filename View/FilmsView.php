@@ -16,7 +16,10 @@ class FilmsView {
     }
 
     public function show(){
-        $htmlString ="\n<article>\n<ul class='flexboxContainer'>\n";
+        $htmlString ="
+        <article class='flexboxContainer'>
+            <ul class='flexboxElement flexboxContainer'>
+        ";
         $index=0;
         $highlight="";
         foreach($this->films as $film){

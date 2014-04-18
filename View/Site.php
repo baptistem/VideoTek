@@ -13,11 +13,9 @@ class Site {
     {
         $this->title=$title;
         if(count($films)==0){
-            $this->title.=" > nouveau";
             $this->content=new FilmEdit();
         }
         else if(count($films)==1){
-            $this->title.=" > ".$films[0]->title;
             $this->content=new FilmView($films[0]);
         }
         else if (count($films)>1){

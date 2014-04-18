@@ -129,7 +129,7 @@ class XmlLoader{
                 $this->film->setDescription($node->wholeText);
                 break;
             case "media" :
-                $this->film->setMedia($node->media);
+                $this->film->setMedia($node->wholeText);
                 break;
         }
 

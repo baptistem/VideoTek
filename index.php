@@ -25,7 +25,10 @@ if($_GET && array_key_exists("id",$_GET)){
    $xmlLoader->getFilmById($_GET["id"],array_key_exists("edit",$_GET));
 }
 else if($_GET && array_key_exists('new',$_GET)){
-    $xmlLoader->films=[];
+    $site = new Site("Erreur",null);
+    $site->setError("401",401,"not authorized, you must be in local to change/add film");
+    $site->show();
+    return;
 }
 else if ($_POST && array_key_exists("titre",$_POST) && array_key_exists("genre",$_POST) && array_key_exists("realisateur",$_POST)
     && array_key_exists("annee",$_POST) && array_key_exists("description",$_POST) && array_key_exists("acteurs",$_POST))
@@ -41,7 +44,7 @@ else if ($_POST && array_key_exists("titre",$_POST) && array_key_exists("genre",
 }
 else if($_GET && array_key_exists("edit",$_GET)){
     $site = new Site("Erreur",null);
-    $site->setError("401",401,"not authorized, you must be in local to change/view films");
+    $site->setError("401",401,"not authorized, you must be in local to change/add film");
     $site->show();
     return;
 }

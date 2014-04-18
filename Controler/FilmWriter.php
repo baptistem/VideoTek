@@ -22,71 +22,66 @@ class FilmWriter
 
     public function write_in_XML()
     {
-        $xmlContent=new XMLWriter("XML/db.xml");;
-        $array=explode('\n',$xmlContent);
-
-        var_dump($array);
-        array_pop($array);
-        array_pop($array);
-        $array[]="<film>
+        $string="<film>
+        <titre>
+        ";
+        $string.=$this->titre."
+        ";
+        $string.="</titre>
+        <genre>
+        ";
+        $string.=$this->genre."
+        ";
+        $string.="</genre>
         ";
 
-        $array[]="<titre>
+        $string.="<realisateur>
         ";
-        $array[]=$this->titre."
+        $string.=$this->realisateur."
         ";
-        $array[]="</titre>
-        ";
-
-        $array[]="<genre>
-        ";
-        $array[]=$this->genre."
-        ";
-        $array[]="</genre>
+        $string.="</realisateur>
         ";
 
-        $array[]="<realisateur>
+        $string.="<annee>
         ";
-        $array[]=$this->realisateur."
+        $string.=$this->annee."
         ";
-        $array[]="</realisateur>
-        ";
-
-        $array[]="<annee>
-        ";
-        $array[]=$this->annee."
-        ";
-        $array[]="</annee>
+        $string.="</annee>
         ";
 
-        $array[]="<acteurs>
+        $string.="<acteurs>
         ";
         foreach($this->acteurs as $acteur)
         {
-            $array[]="</acteur>
+            $string.="</acteur>
             ";
-            $array[]=$acteur."
+            $string.=$acteur."
             ";
-            $array[]="</acteur>
+            $string.="</acteur>
             ";
         }
-        $array[]="</acteurs>
+        $string.="</acteurs>
         ";
 
-        $array[]="<description>
+        $string.="<description>
         ";
-        $array[]=$this->description."
+        $string.=$this->description."
         ";
-        $array[]="</description>
+        $string.="</description>
         ";
 
-        $array[]="</film>
+        $string.="</film>
         ";
-        $array[]="</films>
+        $string.="</films>
+</videotheque>
         ";
-        $array[]="</xml>";
-        $towrite=join('\n',$array);
-        file_put_contents("XML/db.xml",$towrite);
+        $string.="</xml>";
+        $content=file_get_contents("XML/db.xml");
+        str_replace(' </films>','',$content);
+        str_replace('</videotheque>','',$content);
+        str_replace('</xml>','',$content);
+        $content.=$string;
+        file_put_contents("XML/db.xml",$content);
         return true;
     }
 }
